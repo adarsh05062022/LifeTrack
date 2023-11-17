@@ -1,68 +1,59 @@
-<!-- Carousel wrapper -->
-<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
-    <!-- Indicators -->
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-mdb-target="#carouselBasicExample"
-        data-mdb-slide-to="0"
-        class="active"
-        aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-      <button
-        type="button"
-        data-mdb-target="#carouselBasicExample"
-        data-mdb-slide-to="1"
-        aria-label="Slide 2"
-      ></button>
-      <button
-        type="button"
-        data-mdb-target="#carouselBasicExample"
-        data-mdb-slide-to="2"
-        aria-label="Slide 3"
-      ></button>
+ <!-- ======= Hero Section ======= -->
+ <section id="hero" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center"
+      >
+        <h1 data-aos="fade-up">I am your Browser Mate 😎</h1>
+        <h2 data-aos="fade-up" data-aos-delay="400">
+          I will do whatever you ask but in Browser . Just click on the
+          button and start 🙂
+        </h2>
+        <div class="d-flex">
+          <div data-aos="fade-up" data-aos-delay="800">
+            <a
+              href="#"
+              id="start-button-change"
+              class="btn-get-started"
+              onclick="startSearch()"
+              >Start Search 🎙️</a
+            >
+          </div>
+          <div data-aos="fade-up" data-aos-delay="800">
+            <a href="#" class="btn-get-started" onclick="stopSearch()"
+              >Stop Search 🛑</a
+            >
+          </div>
+        </div>
+        <div
+          data-aos="fade-up"
+          data-aos-delay="800"
+          style="margin-top: 20px"
+        >
+          <textarea
+            id="voice-input1"
+            class="voice-input"
+            type="text"
+            placeholder="I am your query🙂"
+            cols="30"
+           
+          ></textarea>
+          <textarea id="voice-input2" class="voice-input" type="text" cols="30" ></textarea>
+        </div>
+      </div>
+      <div
+        class="col-lg-6 order-1 order-lg-2 hero-img"
+        data-aos="fade-left"
+        data-aos-delay="200"
+      >
+        <img
+          src="../../../assets/img/hero-img.png"
+          class="img-fluid animated"
+          alt=""
+        />
+      </div>
     </div>
-  
-    <!-- Inner -->
-    <div class="carousel-inner">
-      <!-- Single item -->
-      <div class="carousel-item active">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp" class="d-block w-100" alt="Sunset Over the City"/>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </div>
-      </div>
-  
-      <!-- Single item -->
-      <div class="carousel-item">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp" class="d-block w-100" alt="Canyon at Nigh"/>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </div>
-  
-      <!-- Single item -->
-      <div class="carousel-item">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp" class="d-block w-100" alt="Cliff Above a Stormy Sea"/>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </div>
-      </div>
-    </div>
-    <!-- Inner -->
-  
-    <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
-  <!-- Carousel wrapper -->
+</section>
+<!-- End Hero -->
