@@ -26,6 +26,8 @@ import { AboutComponent } from './pages/Home/components/about/about.component';
 import { FeatureComponent } from './pages/Home/components/feature/feature.component';
 import { TeamComponent } from './pages/Home/components/team/team.component';
 import { FooterComponent } from './pages/Home/components/footer/footer.component';
+import { IncomeComponent } from './pages/Finance/income/income.component';
+import { ExpenseComponent } from './pages/Finance/expense/expense.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { FooterComponent } from './pages/Home/components/footer/footer.component
     AboutComponent,
     FeatureComponent,
     TeamComponent,
-    FooterComponent
+    FooterComponent,
+    IncomeComponent,
+    ExpenseComponent
   ],
   imports: [
     BrowserModule,
