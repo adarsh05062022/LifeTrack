@@ -26,8 +26,11 @@ import { AboutComponent } from './pages/Home/components/about/about.component';
 import { FeatureComponent } from './pages/Home/components/feature/feature.component';
 import { TeamComponent } from './pages/Home/components/team/team.component';
 import { FooterComponent } from './pages/Home/components/footer/footer.component';
-import { IncomeComponent } from './pages/Finance/income/income.component';
-import { ExpenseComponent } from './pages/Finance/expense/expense.component';
+
+import { FinanceComponent } from './pages/Finance/finance/finance.component';
+import { SavingComponent } from './pages/Finance/pages/saving/saving.component';
+import { ExpenseComponent } from './pages/Finance/pages/expense/expense.component';
+import { IncomeComponent } from './pages/Finance/pages/income/income.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +42,12 @@ import { ExpenseComponent } from './pages/Finance/expense/expense.component';
     FeatureComponent,
     TeamComponent,
     FooterComponent,
+    ExpenseComponent,
     IncomeComponent,
-    ExpenseComponent
+    SavingComponent,
+
+    FinanceComponent,
+    SavingComponent
   ],
   imports: [
     BrowserModule,
