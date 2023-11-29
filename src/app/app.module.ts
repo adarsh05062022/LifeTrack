@@ -35,6 +35,9 @@ import { FinanceHeaderCardComponent } from './pages/Finance/component/finance-he
 import { FinanceChartComponent } from './pages/Finance/component/finance-chart/finance-chart.component';
 import { AddTransactionComponent } from './pages/Finance/component/add-transaction/add-transaction.component';
 import { TransactionComponent } from './pages/Finance/component/transaction/transaction.component';
+import { TransactionListComponent } from './pages/Finance/component/transaction-list/transaction-list.component';
+import { TransactionListCardComponent } from './pages/Finance/component/sub_component/transaction-list-card/transaction-list-card.component';
+import { TransactionDetailsViewModalComponent } from './pages/Finance/component/sub_component/transaction-details-view-modal/transaction-details-view-modal.component';
 
 
 @NgModule({
@@ -58,6 +61,9 @@ import { TransactionComponent } from './pages/Finance/component/transaction/tran
     FinanceChartComponent,
         AddTransactionComponent,
         TransactionComponent,
+        TransactionListComponent,
+        TransactionListCardComponent,
+        TransactionDetailsViewModalComponent,
   ],
   imports: [
     BrowserModule,
