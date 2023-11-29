@@ -31,6 +31,11 @@ import { FinanceComponent } from './pages/Finance/finance/finance.component';
 import { SavingComponent } from './pages/Finance/pages/saving/saving.component';
 import { ExpenseComponent } from './pages/Finance/pages/expense/expense.component';
 import { IncomeComponent } from './pages/Finance/pages/income/income.component';
+import { FinanceHeaderCardComponent } from './pages/Finance/component/finance-header-card/finance-header-card.component';
+import { FinanceChartComponent } from './pages/Finance/component/finance-chart/finance-chart.component';
+import { AddTransactionComponent } from './pages/Finance/component/add-transaction/add-transaction.component';
+import { TransactionComponent } from './pages/Finance/component/transaction/transaction.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +52,12 @@ import { IncomeComponent } from './pages/Finance/pages/income/income.component';
     SavingComponent,
 
     FinanceComponent,
-    SavingComponent
+    SavingComponent,
+    FinanceHeaderCardComponent,
+  
+    FinanceChartComponent,
+        AddTransactionComponent,
+        TransactionComponent,
   ],
   imports: [
     BrowserModule,
