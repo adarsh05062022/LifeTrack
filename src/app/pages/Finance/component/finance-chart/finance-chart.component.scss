@@ -1,0 +1,68 @@
+
+      
+      
+      .container {
+        // width: 500;
+        // height: 500;
+        display: grid;
+        place-items: center;
+        padding: 5rem 0;
+      }
+      
+      .circle1 {
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background-color: rgba(68, 2, 248);
+        display: grid;
+        place-items: center;
+        
+      }
+      
+      .circle2 {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        background-color: rgb(96, 41, 246);
+        display: grid;
+        place-items: center;
+        animation: animation 5s 4s alternate infinite;
+      }
+      
+      .circle3 {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: rgb(152, 118, 245);
+        display: grid;
+        place-items: center;
+        animation: animation 5s 3s alternate infinite;
+      }
+      
+      .circle4 {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgb(175, 151, 243);
+        display: grid;
+        place-items: center;
+        animation: animation 5s 2s alternate infinite;
+      }
+      
+      .circle5 {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgb(208, 195, 245);
+        animation: animation 5s 1s alternate infinite;
+      }
+      
+      @keyframes animation {
+        from {
+          transform: scale(1)
+        }
+      
+        to {
+          transform: scale(1.5)
+        }
+      }
