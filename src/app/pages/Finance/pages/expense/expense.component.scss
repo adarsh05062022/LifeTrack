@@ -1,0 +1,45 @@
+.card{
+        // max-width: fit-content;
+        
+
+        .card-body{
+
+                display: flex;
+                justify-content: space-around;
+                padding: 1rem !important;
+
+                .card-item{
+                        display: flex;
+                        // justify-content: center;
+                        align-items: center;
+
+                        gap: 30px;
+
+                        .card-title{
+                                font-size: 24px;
+                                font-weight: 600;
+                                letter-spacing: 1px;
+                                margin: 0 !important;
+
+                        }
+
+                        p{
+                                margin: 0 !important;
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+
+                                .card-text{
+
+                                        font-size: 30px;
+                                        font-weight: 600;
+                                        letter-spacing: 1px;
+                                        color: yellowgreen;
+        
+                                }
+                        }
+
+                        
+                }
+        }
+}

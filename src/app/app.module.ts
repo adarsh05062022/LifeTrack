@@ -40,6 +40,7 @@ import { TransactionDetailsViewModalComponent } from './pages/Finance/component/
 import { NgChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './pages/Finance/pages/dashboard/dashboard.component';
 import { ViewTransactionComponent } from './pages/Finance/pages/view-transaction/view-transaction.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -89,6 +90,8 @@ import { ViewTransactionComponent } from './pages/Finance/pages/view-transaction
     MdbValidationModule,
     BrowserAnimationsModule,
     NgChartsModule,
+    ReactiveFormsModule,
+    FormsModule
    
   ],
   providers: [],
