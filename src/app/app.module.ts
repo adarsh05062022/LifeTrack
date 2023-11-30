@@ -28,7 +28,6 @@ import { TeamComponent } from './pages/Home/components/team/team.component';
 import { FooterComponent } from './pages/Home/components/footer/footer.component';
 
 import { FinanceComponent } from './pages/Finance/finance/finance.component';
-import { SavingComponent } from './pages/Finance/pages/saving/saving.component';
 import { ExpenseComponent } from './pages/Finance/pages/expense/expense.component';
 import { IncomeComponent } from './pages/Finance/pages/income/income.component';
 import { FinanceHeaderCardComponent } from './pages/Finance/component/finance-header-card/finance-header-card.component';
@@ -38,6 +37,11 @@ import { TransactionComponent } from './pages/Finance/component/transaction/tran
 import { TransactionListComponent } from './pages/Finance/component/transaction-list/transaction-list.component';
 import { TransactionListCardComponent } from './pages/Finance/component/sub_component/transaction-list-card/transaction-list-card.component';
 import { TransactionDetailsViewModalComponent } from './pages/Finance/component/sub_component/transaction-details-view-modal/transaction-details-view-modal.component';
+import { NgChartsModule } from 'ng2-charts';
+import { DashboardComponent } from './pages/Finance/pages/dashboard/dashboard.component';
+import { ViewTransactionComponent } from './pages/Finance/pages/view-transaction/view-transaction.component';
+
+
 
 
 @NgModule({
@@ -52,10 +56,8 @@ import { TransactionDetailsViewModalComponent } from './pages/Finance/component/
     FooterComponent,
     ExpenseComponent,
     IncomeComponent,
-    SavingComponent,
 
     FinanceComponent,
-    SavingComponent,
     FinanceHeaderCardComponent,
   
     FinanceChartComponent,
@@ -64,6 +66,8 @@ import { TransactionDetailsViewModalComponent } from './pages/Finance/component/
         TransactionListComponent,
         TransactionListCardComponent,
         TransactionDetailsViewModalComponent,
+        DashboardComponent,
+        ViewTransactionComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +87,9 @@ import { TransactionDetailsViewModalComponent } from './pages/Finance/component/
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgChartsModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,10 @@
-<h1 class="text-center">Finance</h1>
-<mdb-tabs [fill]="true">
-  <mdb-tab title="Expense"><app-expense></app-expense></mdb-tab>
-  <mdb-tab title="Income"><app-income></app-income></mdb-tab>
-  <mdb-tab title="Saving"><app-saving></app-saving></mdb-tab>
-</mdb-tabs>
+
+<div class="container-fluid">
+  <mdb-tabs  [vertical]="true">
+    <mdb-tab title="Dashboard"><app-dashboard></app-dashboard></mdb-tab>
+    <mdb-tab title="View Transactions"><app-view-transaction></app-view-transaction></mdb-tab>
+    <mdb-tab title="Income"><app-expense></app-expense></mdb-tab>
+    <mdb-tab title="Expense"><app-income></app-income></mdb-tab>
+  </mdb-tabs> 
+</div>
+
