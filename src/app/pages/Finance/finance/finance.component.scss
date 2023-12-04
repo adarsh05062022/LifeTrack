@@ -1,10 +1,27 @@
-:host ::ng-deep mdb-tabs ul{
-     max-width: fit-content;
-     padding: 5rem;
-     background-color: #fff;
+:host ::ng-deep mdb-tabs ul {
+  max-width: fit-content;
+  padding: 5rem;
+  background-color: #2daed8;
+  margin: 15px 15px;
+  border-radius: 28px;
 
-     li a{
-     text-align: start;
-         
-     }
+  li a {
+    text-align: start;
+  }
+}
+::ng-deep {
+  .nav-tabs .nav-link.active {
+    color: #3b71ca;
+    border-color: #3b71ca;
+    border-radius: 47px !important;
+    font-size: 14px;
+  }
+  .nav-tabs .nav-link:hover{
+     background-color: #ffffff2e;
+     border-radius: 47px !important;   
+  }
+  .nav-tabs .nav-link{
+     color:#fff;
+     margin-top:10px
+  }
 }
