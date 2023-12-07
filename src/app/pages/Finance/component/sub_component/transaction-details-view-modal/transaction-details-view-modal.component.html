@@ -20,16 +20,16 @@
               >
                 <div class="date_amount-container py-3">
                   <div class="d-flex justify-content-cener align-items-center date">
-                    <label for="ExpenseDate" class="form-label">Title</label>
-                    <input type="text" id="ExpenseTitle" class="form-control">
+                    <label for="ExpenseDate"  class="form-label">Title</label>
+                    <input type="text" id="ExpenseTitle" [value]="transaction.title" class="form-control">
                   </div>
                   <div class="d-flex justify-content-cener align-items-center date">
                     <label for="ExpenseDate" class="form-label">Date</label>
-                    <input type="date" id="ExpenseTitle" class="form-control">
+                    <input type="date" id="ExpenseTitle"[value]="transaction.date" class="form-control">
                   </div>
                   <div class="d-flex justify-content-cener align-items-center amount">
                     <label for="ExpenseDate" class="form-label">Amount(in Rs)</label>
-                    <input type="text" id="ExpenseTitle" class="form-control" />
+                    <input type="text" id="ExpenseTitle" [value]="transaction.amount" class="form-control" />
                   </div>
                 </div>
               </div>
@@ -67,7 +67,7 @@
         
               <div class="message py-3 d-flex justify-content-center align-items-center w-100">
                 <label for="ExpenseMessage" class="form-label ">Message</label>
-                <textarea class="form-control" id="ExpenseMessage" rows="5" cols="50"></textarea>
+                <textarea class="form-control" [value]="transaction.messege" id="ExpenseMessage" rows="5" cols="50"></textarea>
               </div>
         
             </div>

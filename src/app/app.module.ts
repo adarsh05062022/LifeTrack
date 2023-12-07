@@ -28,8 +28,6 @@ import { TeamComponent } from './pages/Home/components/team/team.component';
 import { FooterComponent } from './pages/Home/components/footer/footer.component';
 
 import { FinanceComponent } from './pages/Finance/finance/finance.component';
-import { ExpenseComponent } from './pages/Finance/pages/expense/expense.component';
-import { IncomeComponent } from './pages/Finance/pages/income/income.component';
 import { FinanceHeaderCardComponent } from './pages/Finance/component/finance-header-card/finance-header-card.component';
 import { FinanceChartComponent } from './pages/Finance/component/finance-chart/finance-chart.component';
 import { AddTransactionComponent } from './pages/Finance/component/add-transaction/add-transaction.component';
@@ -41,8 +39,14 @@ import { NgChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './pages/Finance/pages/dashboard/dashboard.component';
 import { ViewTransactionComponent } from './pages/Finance/pages/view-transaction/view-transaction.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { CreateTransactionComponent } from './pages/Finance/pages/create-transaction/create-transaction.component';
+import { HealthComponent } from './pages/Health/health/health.component';
+import { TasksComponent } from './pages/Health/pages/tasks/tasks.component';
+import { HealthDetailsComponent } from './pages/Health/pages/health-details/health-details.component';
+// import { HealthdashboardComponent } from './pages/Health/pages/dashboard/dashboard.component';
+import { FinanceModule } from './pages/Finance/finance.module';
+import { HealthModule } from './pages/Health/health.module';
+import { WorkModule } from './pages/Work/work.module';
 
 
 @NgModule({
@@ -54,21 +58,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AboutComponent,
     FeatureComponent,
     TeamComponent,
-    FooterComponent,
-    ExpenseComponent,
-    IncomeComponent,
-
-    FinanceComponent,
-    FinanceHeaderCardComponent,
-  
-    FinanceChartComponent,
-        AddTransactionComponent,
-        TransactionComponent,
-        TransactionListComponent,
-        TransactionListCardComponent,
-        TransactionDetailsViewModalComponent,
-        DashboardComponent,
-        ViewTransactionComponent,
+    FooterComponent,    
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -90,11 +82,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MdbValidationModule,
     BrowserAnimationsModule,
     NgChartsModule,
-    ReactiveFormsModule,
-    FormsModule
-   
+    FormsModule,
+    FinanceModule,
+    HealthModule,
+    WorkModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

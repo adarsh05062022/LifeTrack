@@ -7,5 +7,8 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
   styleUrls: ['./transaction-details-view-modal.component.scss']
 })
 export class TransactionDetailsViewModalComponent {
+
+  transaction!: any;
+  
   constructor(public modalRef: MdbModalRef<TransactionDetailsViewModalComponent>) {}
 }
