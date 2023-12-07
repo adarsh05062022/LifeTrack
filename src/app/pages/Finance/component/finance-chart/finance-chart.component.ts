@@ -11,19 +11,20 @@ import 'chartjs-adapter-luxon';
 export class FinanceChartComponent {
   public lineChartData: ChartDataset[] = [
     {
-      label: 'Budget',
-      data: [14000,15000,13000,14000,16000,12000,15000],
+      label: 'Expense',
+      data: [14000, 15000, 13000, 14000, 16000, 12000, 15000],
       borderColor: 'red',
       backgroundColor: 'rgba(255, 0, 0, 0.5)',
-      stack: 'combined',
-      
+      fill: false,
+      tension: 0.4
     },
     {
-      label: 'Actual',
-      data: [11900,14000,13000,17000,15000,10000,18000],
+      label: 'Income',
+      data: [11900, 14000, 13000, 17000, 15000, 10000, 18000],
       borderColor: 'blue',
       backgroundColor: 'rgba(0, 0, 255, 0.5)',
-      stack: 'combined'
+      fill: false,
+      tension: 0.4
     }
   ];
 
@@ -41,12 +42,7 @@ export class FinanceChartComponent {
     plugins: {
       title: {
         display: true,
-        text: 'Budget vs Actual Expense'
-      }
-    },
-    scales: {
-      y: {
-        stacked: true
+        text: 'Income vs Expense Chart'
       }
     }
   };

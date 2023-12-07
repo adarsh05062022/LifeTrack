@@ -12,78 +12,31 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Groceries purchase</td>
+    <tr *ngFor="let transaction of transactions; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{transaction.title}}</td>
       <td>
-        <span class="badge badge-success rounded-pill d-inline">Food</span>
+        <span class="badge badge-success rounded-pill d-inline">{{transaction.category}}</span>
       </td>
       <td>
-        <p class="fw-normal mb-1">100 RS</p>
-        <p class="text-muted mb-0">Expense</p>
+        <p class="fw-normal mb-1">{{transaction.amount}}</p>
+        <p class="text-muted mb-0">{{transaction.type}}</p>
       </td>
       
       
-      <td>Bought groceries for the week and had dinner with friends.</td>
-      <td>November 29, 2023</td>
+      <td>{{transaction.messege}}</td>
+      <td>{{transaction.date}}</td>
       <td>
         <button
           type="button"
           class="btn btn-link btn-sm btn-rounded"
-          (click)="openModal()"
+          (click)="openModal(transaction)"
         >
           Edit
         </button>
       </td>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>Groceries purchase</td>
-      <td>
-        <span class="badge badge-success rounded-pill d-inline">Food</span>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">100 RS</p>
-        <p class="text-muted mb-0">Expense</p>
-      </td>
-      
-      
-      <td>Bought groceries for the week and had dinner with friends.</td>
-      <td>November 29, 2023</td>
-      <td>
-        <button
-          type="button"
-          class="btn btn-link btn-sm btn-rounded"
-          (click)="openModal()"
-        >
-          Edit
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Groceries purchase</td>
-      <td>
-        <span class="badge badge-success rounded-pill d-inline">Food</span>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">100 RS</p>
-        <p class="text-muted mb-0">Expense</p>
-      </td>
-      
-      
-      <td>Bought groceries for the week and had dinner with friends.</td>
-      <td>November 29, 2023</td>
-      <td>
-        <button
-          type="button"
-          class="btn btn-link btn-sm btn-rounded"
-          (click)="openModal()"
-        >
-          Edit
-        </button>
-      </td>
-    </tr>
+    
     
     
   </tbody>
