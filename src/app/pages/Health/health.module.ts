@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgChartsModule } from 'ng2-charts';
 import { PrescriptionComponent } from './component/prescription/prescription.component';
 import { PrescriptionListComponent } from './component/prescription-list/prescription-list.component';
+import { AddPrescriptionComponent } from './component/add-prescription/add-prescription.component';
+import { PersonalHealthDetailsComponent } from './component/personal-health-details/personal-health-details.component';
 
 
 
@@ -23,7 +25,9 @@ import { PrescriptionListComponent } from './component/prescription-list/prescri
     ActivityChartComponent,
     CircularChartComponent,
     PrescriptionComponent,
-    PrescriptionListComponent
+    PrescriptionListComponent,
+    AddPrescriptionComponent,
+    PersonalHealthDetailsComponent
   ],
   imports: [
     CommonModule,

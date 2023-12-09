@@ -1,0 +1,33 @@
+.container {
+        
+        box-shadow: 2px 2px 15px -3px rgba(0, 0, 0, 0.07),
+          0 10px 20px -2px rgba(0, 0, 0, 0.04);
+        border-radius: 20px;
+      
+        .wrapper {
+         
+        
+          input {
+            background-color: #f0f1f3;
+            height: 40px;
+            font-size: 14px;
+            color: #111111;
+           
+            padding: 5px 15px;
+            border-radius: 11px;
+                border: 2px solid #7ddcdc;
+          }
+
+          label {
+                font-weight: 600;
+                color:#000 !important;
+                font-size: 15px;
+              }
+       
+      
+        
+      
+          
+        }
+      }
+      
