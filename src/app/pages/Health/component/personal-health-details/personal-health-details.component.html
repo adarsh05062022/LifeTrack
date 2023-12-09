@@ -1,0 +1,68 @@
+<form class="p-3">
+  <div class="container ">
+    <div
+      class="wrapper p-2 "
+    >
+    <div class=" text-black text-center pt-3">
+        <h4>
+                ADD PRESONAL DETAILS
+        </h4>
+</div>
+      <div class="">
+        <div class="date_amount-container py-3">
+          <div
+            class=""
+          >
+            <label for="ExpenseDate" class="form-label">Age:</label>
+            <input type="number" [disabled]="!editable" value="18" id="ExpenseTitle" class="form-control" />
+          </div>
+          <div
+            class=""
+          >
+            <label for="ExpenseDate" class="form-label">Edit Weight(in kg):</label>
+            <input type="number" value="67" id="ExpenseTitle" [disabled]="!editable" class="form-control" />
+          </div>
+          <div
+            class=""
+          >
+            <label for="ExpenseDate" class="form-label">Edit Height(in cm):</label>
+            <input type="number" value="165" id="ExpenseTitle" [disabled]="!editable" class="form-control" />
+          </div>
+          <div
+            class=""
+          >
+            <label for="ExpenseDate" class="form-label">Workout Duration(in Hr:Min):</label>
+            <input type="time" value="04:30" id="ExpenseTitle" [disabled]="!editable" class="form-control" />
+          </div>
+          <div
+            class=""
+          >
+            <label for="ExpenseDate" class="form-label">Glass of Water(1 Glass = 250ml):</label>
+            <input type="number" value="10" id="ExpenseTitle" [disabled]="!editable" class="form-control" />
+          </div>
+          <div
+            class=""
+          >
+            <label for="ExpenseDate" class="form-label">Calory Intake(kcal):</label>
+            <input type="number" value="2000" id="ExpenseTitle" [disabled]="!editable" class="form-control" />
+          </div>
+          <div
+            class=""
+          >
+            <label for="ExpenseDate" class="form-label">Step Details:</label>
+            <input type="number" value="10000" id="ExpenseTitle" [disabled]="!editable" class="form-control" />
+          </div>
+          
+          
+        </div>
+      </div>
+
+     
+      <div class="button py-2 d-flex justify-content-center align-items-end w-100">
+        <button type="button" class="btn btn-danger" mdbRipple (click)="changeEditable()">
+                {{!editable?" Edit Details":" Save Changes"}}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
