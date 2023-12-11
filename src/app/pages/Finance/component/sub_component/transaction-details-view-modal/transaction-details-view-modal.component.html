@@ -1,89 +1,100 @@
 <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button
-          type="button"
-          class="btn-close"
-          aria-label="Close"
-          (click)="modalRef.close()"
-        ></button>
-
-
-      </div>
-      <div class="modal-body">
-        
-        <form class="">
-          <div class="container ">
-            <div class="wrapper  d-flex justify-content-center align-items-center flex-column">
-             
-              <div
-                class="d-flex justify-content-cener align-items-center "
-              >
-                <div class="date_amount-container py-3">
-                  <div class="d-flex justify-content-cener align-items-center date">
-                    <label for="ExpenseDate"  class="form-label">Title</label>
-                    <input type="text" id="ExpenseTitle" [value]="transaction.title" class="form-control">
-                  </div>
-                  <div class="d-flex justify-content-cener align-items-center date">
-                    <label for="ExpenseDate" class="form-label">Date</label>
-                    <input type="date" id="ExpenseTitle"[value]="transaction.date" class="form-control">
-                  </div>
-                  <div class="d-flex justify-content-cener align-items-center amount">
-                    <label for="ExpenseDate" class="form-label">Amount(in Rs)</label>
-                    <input type="text" id="ExpenseTitle" [value]="transaction.amount" class="form-control" />
-                  </div>
-                </div>
-              </div>
-        
-              <div
-                class=" d-flex justify-content-center align-items-center "
-              >
-                <div class="type_category-container p-3">
-                  <div class="d-flex justify-content-cener align-items-center type">
-                    <label for="ExpenseDate" class="form-label">Type</label>
-                    <select class="form-select" id="ExpenseType ">
-                      <option value="expense" selected>Expense</option>
-                      <option value="expense">Income</option>
-                      <option value="expense">Saving</option>
-                    </select>
-                  </div>
-                  <div class="d-flex justify-content-cener align-items-center category">
-                    <label for="ExpenseDate" class="form-label">Category</label>
-                    <select class="form-select" id="ExpenseType">
-                      <option value="groceries" selected>Groceries</option>
-                      <option value="dining">Dining Out</option>
-                      <option value="clothing">Clothing</option>
-                      <option value="education">Education</option>
-                      <option value="travel">Travel</option>
-                      <option value="insurance">Insurance</option>
-                      <option value="gifts">Gifts</option>
-                      <option value="personalCare">Personal Care</option>
-                      <option value="charity">Charity/Donations</option>
-                      <option value="electronics">Electronics</option>
-                      <option value="subscriptions">Subscriptions</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-        
-              <div class="message py-3 d-flex justify-content-center align-items-center w-100">
-                <label for="ExpenseMessage" class="form-label ">Message</label>
-                <textarea class="form-control" [value]="transaction.messege" id="ExpenseMessage" rows="5" cols="50"></textarea>
-              </div>
-        
+  <h5 class="modal-title" id="exampleModalLabel">Transaction Details</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ></button>
+</div>
+<div class="modal-body">
+  <form class="">
+    <div class="container">
+      <div
+        class="wrapper d-flex justify-content-center align-items-center flex-column"
+      >
+        <div class="d-flex justify-content-cener align-items-center">
+          <div class="date_amount-container py-3">
+            <div class="d-flex justify-content-cener align-items-center date">
+              <label for="ExpenseDate" class="form-label">Title</label>
+              <input
+                type="text"
+                id="ExpenseTitle"
+                [value]="transaction.title"
+                class="form-control"
+                [(ngModel)]="transaction.title"
+                name="title"
+              />
             </div>
-            
-        
-        
-        
-            
+            <div class="d-flex justify-content-cener align-items-center date">
+              <label for="ExpenseDate" class="form-label">Date</label>
+              <input
+                type="date"
+                id="ExpenseTitle"
+                [value]="showDate(transaction.date)"
+                class="form-control"
+                [(ngModel)]="transaction.date"
+                name="date"
+              />
+            </div>
+            <div class="d-flex justify-content-cener align-items-center amount">
+              <label for="ExpenseDate" class="form-label">Amount(in Rs)</label>
+              <input
+                type="text"
+                id="ExpenseTitle"
+                [value]="transaction.amount"
+                class="form-control"
+                [(ngModel)]="transaction.amount"
+                name="amount"
+              />
+            </div>
           </div>
-        </form>
-        
+        </div>
 
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="type_category-container p-3">
+            <div class="d-flex justify-content-cener align-items-center type">
+              <label for="ExpenseDate" class="form-label">Type</label>
+              <select class="form-select" name="type" id="ExpenseType" [(ngModel)]="transaction.type" name="type">
+                <option *ngFor="let type of financeType" [value]="type" [selected]="type === transaction.type">
+                  {{ type  }}
+                </option>
+              </select>
+            </div>
+            <div
+              class="d-flex justify-content-cener align-items-center category"
+            >
+              <label for="ExpenseDate" class="form-label">Category</label>
+              <select class="form-select" name="category" id="ExpenseCategory" [(ngModel)]="transaction.category" name="category">
+                <option *ngFor="let category of financeCategories" [value]="category.value" [selected]="category.value === transaction.category ">
+                  {{ category.label }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="message py-3 d-flex justify-content-center align-items-center w-100"
+        >
+          <label for="ExpenseMessage" class="form-label">Message</label>
+          <textarea
+            class="form-control"
+            [value]="transaction.message"
+            id="ExpenseMessage"
+            rows="5"
+            cols="50"
+            [(ngModel)]="transaction.message"
+            name="message"
+          ></textarea>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="modalRef.close()">
-          Delete
-        </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" (click)="deleteTransaction()">
+    Delete
+  </button>
+  <button type="button" class="btn btn-primary" (click)="UpdateTransaction()">Save changes</button>
+</div>

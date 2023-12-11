@@ -12,10 +12,10 @@
                   class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title"
                 >
                 Available funds
-                  <i  class="fas fa-circle-info p-1"  mdbTooltip="Hi! I'm tooltip"></i>
+                  <i  class="fas fa-circle-info p-1"  mdbTooltip="Total Income - Total Expense"></i>
                 </h4>
                 <span class="hind-font caption-12 c-dashboardInfo__count"
-                  >₹ 10,500</span
+                  >₹ {{Profit}}</span
                 >
               </div>
             </div>
@@ -24,10 +24,10 @@
                 <h4
                   class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title"
                 >
-                  Monthly Income<i  class="fas fa-circle-info p-1"  mdbTooltip="Hi! I'm tooltip"></i>
+                  Monthly Income
                 </h4>
                 <span class="hind-font caption-12 c-dashboardInfo__count"
-                  >₹ 1,200</span
+                  >₹ {{TotalIncome}}</span
                 >
               </div>
             </div>
@@ -36,12 +36,10 @@
                 <h4
                   class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title"
                 >
-                  Monthly Expense<i  class="fas fa-circle-info p-1"  mdbTooltip="Hi! I'm tooltip"></i>
+                  Monthly Expense
                 </h4>
                 <span class="hind-font caption-12 c-dashboardInfo__count"
-                  >₹ 8,200</span
-                ><span class="hind-font caption-12 c-dashboardInfo__subInfo"
-                  >Last month: ₹ 7,400</span
+                  >₹ {{TotalExpense}}</span
                 >
               </div>
             </div>
@@ -50,10 +48,10 @@
                 <h4
                   class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title"
                 >
-                  Profit Gain<i  class="fas fa-circle-info p-1"  mdbTooltip="Hi! I'm tooltip"></i>
+                  Profit Gain<i  class="fas fa-circle-info p-1"  mdbTooltip="(Total Income - Total Expense)/Total Income x 100"></i>
                 </h4>
                 <span class="hind-font caption-12 c-dashboardInfo__count"
-                  >2.45%</span
+                  >{{ProfitPercentage}}%</span
                 >
               </div>
             </div>
@@ -61,20 +59,20 @@
         </div>
         <div class="col-md-12 col-lg-8 mt-3">
           <div class="card p-3">
-            <app-finance-chart></app-finance-chart>
+            <app-finance-chart  [transactionList]="transactionList"></app-finance-chart>
           </div>
         </div>
         <div class="col-md-12 col-lg-4 mt-3">
           <div class="card p-3">
             <h3 class=" mt-6 mb-4">Recent Transactions</h3>
 
-
-            <div class="transactions">
+            <div *ngFor="let Transaction of recentTransaction" class="transactions pt-2">
 
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex justify-content-between align-items-center gap-2">
                       <div class="image">
-                        <svg
+                        <!-- <svg
+
                         width="48"
                         height="48"
                         viewBox="20 20 48 48"
@@ -136,285 +134,24 @@
                             />
                           </filter>
                         </defs>
-                      </svg>
+                      </svg> -->
+
+                        <span *ngIf="Transaction.type==='income'" class="expenseLogo">➕</span>
+                        <span *ngIf="Transaction.type==='expense'" class="expenseLogo">➖</span>
                       </div>
 
-                      <div class="text">
+                      <div class="text p-2">
                         <div class="title">
-                         <b>Title</b> 
+                         <b>{{Transaction.title}}</b> 
                         </div>
-                        <div class="text">
-                          29 November
+                        <div class="text text-muted">
+                          {{formettedDate(Transaction.date)}}
                         </div>
                       </div>
                 </div>
                 <div class="amount">
                   <span class="amount-detail">
-                    + 100 RS
-                  </span>
-                </div>
-              </div>
-              
-              
-            </div>
-            <div class="transactions pt-2">
-
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                      <div class="image">
-                        <svg
-                        width="48"
-                        height="48"
-                        viewBox="20 20 48 48"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="mr-2"
-                      >
-                        <g filter="url(#filter0_d_1_55)">
-                          <rect
-                            x="20"
-                            y="20"
-                            width="48"
-                            height="48"
-                            rx="16"
-                            fill="#EF8E19"
-                          />
-                        </g>
-                        <path
-                          d="M40.25 51.5V53.375C40.25 53.582 40.418 53.75 40.625 53.75H42.125C42.2245 53.75 42.3198 53.7105 42.3902 53.6402C42.4605 53.5698 42.5 53.4745 42.5 53.375V51.5H43.25V53.375C43.25 53.582 43.418 53.75 43.625 53.75H45.125C45.2245 53.75 45.3198 53.7105 45.3902 53.6402C45.4605 53.5698 45.5 53.4745 45.5 53.375V51.5H45.626C48.614 51.5 50.75 49.9505 50.75 47.27C50.75 45.017 49.2395 43.7855 47.471 43.61V43.478C48.926 43.115 49.9955 42.017 49.9955 40.193C49.9955 37.895 48.2705 36.5 45.638 36.5H45.5V34.625C45.5 34.5255 45.4605 34.4302 45.3902 34.3598C45.3198 34.2895 45.2245 34.25 45.125 34.25H43.625C43.5255 34.25 43.4302 34.2895 43.3598 34.3598C43.2895 34.4302 43.25 34.5255 43.25 34.625V36.5H42.3905V34.625C42.3905 34.5255 42.351 34.4302 42.2807 34.3598C42.2103 34.2895 42.115 34.25 42.0155 34.25H40.625C40.5255 34.25 40.4302 34.2895 40.3598 34.3598C40.2895 34.4302 40.25 34.5255 40.25 34.625V36.5L37.253 36.5165C37.1535 36.5165 37.0582 36.556 36.9878 36.6263C36.9175 36.6967 36.878 36.792 36.878 36.8915V38.375C36.878 38.5805 37.043 38.75 37.25 38.75L38.3825 38.7425C38.6796 38.7445 38.9638 38.8639 39.1732 39.0746C39.3825 39.2854 39.5 39.5704 39.5 39.8675V48.125C39.5 48.4234 39.3815 48.7095 39.1705 48.9205C38.9595 49.1315 38.6734 49.25 38.375 49.25L37.253 49.2665C37.1535 49.2665 37.0582 49.306 36.9878 49.3763C36.9175 49.4467 36.878 49.542 36.878 49.6415V51.1415C36.878 51.3485 37.046 51.5165 37.253 51.5165L40.25 51.5ZM42.3905 38.7305H44.969C46.328 38.7305 47.126 39.4775 47.126 40.6985C47.126 42.005 46.2635 42.7415 44.3105 42.7415H42.3905V38.7305ZM42.3905 44.807H45.1505C46.856 44.807 47.7845 45.677 47.7845 47.093C47.7845 48.5225 46.8455 49.268 44.5475 49.268H42.3905V44.8085V44.807Z"
-                          fill="white"
-                        />
-                        <defs>
-                          <filter
-                            id="filter0_d_1_55"
-                            x="0"
-                            y="0"
-                            width="88"
-                            height="88"
-                            filterUnits="userSpaceOnUse"
-                            color-interpolation-filters="sRGB"
-                          >
-                            <feFlood
-                              flood-opacity="0"
-                              result="BackgroundImageFix"
-                            />
-                            <feColorMatrix
-                              in="SourceAlpha"
-                              type="matrix"
-                              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                              result="hardAlpha"
-                            />
-                            <feOffset />
-                            <feGaussianBlur stdDeviation="10" />
-                            <feComposite in2="hardAlpha" operator="out" />
-                            <feColorMatrix
-                              type="matrix"
-                              values="0 0 0 0 0.5586 0 0 0 0 0.560629 0 0 0 0 0.57 0 0 0 0.04 0"
-                            />
-                            <feBlend
-                              mode="normal"
-                              in2="BackgroundImageFix"
-                              result="effect1_dropShadow_1_55"
-                            />
-                            <feBlend
-                              mode="normal"
-                              in="SourceGraphic"
-                              in2="effect1_dropShadow_1_55"
-                              result="shape"
-                            />
-                          </filter>
-                        </defs>
-                      </svg>
-                      </div>
-
-                      <div class="text">
-                        <div class="title">
-                         <b>Title</b> 
-                        </div>
-                        <div class="text">
-                          29 November
-                        </div>
-                      </div>
-                </div>
-                <div class="amount">
-                  <span class="amount-detail">
-                    + 100 RS
-                  </span>
-                </div>
-              </div>
-              
-              
-            </div>
-            <div class="transactions pt-2">
-
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                      <div class="image">
-                        <svg
-                        width="48"
-                        height="48"
-                        viewBox="20 20 48 48"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="mr-2"
-                      >
-                        <g filter="url(#filter0_d_1_55)">
-                          <rect
-                            x="20"
-                            y="20"
-                            width="48"
-                            height="48"
-                            rx="16"
-                            fill="#EF8E19"
-                          />
-                        </g>
-                        <path
-                          d="M40.25 51.5V53.375C40.25 53.582 40.418 53.75 40.625 53.75H42.125C42.2245 53.75 42.3198 53.7105 42.3902 53.6402C42.4605 53.5698 42.5 53.4745 42.5 53.375V51.5H43.25V53.375C43.25 53.582 43.418 53.75 43.625 53.75H45.125C45.2245 53.75 45.3198 53.7105 45.3902 53.6402C45.4605 53.5698 45.5 53.4745 45.5 53.375V51.5H45.626C48.614 51.5 50.75 49.9505 50.75 47.27C50.75 45.017 49.2395 43.7855 47.471 43.61V43.478C48.926 43.115 49.9955 42.017 49.9955 40.193C49.9955 37.895 48.2705 36.5 45.638 36.5H45.5V34.625C45.5 34.5255 45.4605 34.4302 45.3902 34.3598C45.3198 34.2895 45.2245 34.25 45.125 34.25H43.625C43.5255 34.25 43.4302 34.2895 43.3598 34.3598C43.2895 34.4302 43.25 34.5255 43.25 34.625V36.5H42.3905V34.625C42.3905 34.5255 42.351 34.4302 42.2807 34.3598C42.2103 34.2895 42.115 34.25 42.0155 34.25H40.625C40.5255 34.25 40.4302 34.2895 40.3598 34.3598C40.2895 34.4302 40.25 34.5255 40.25 34.625V36.5L37.253 36.5165C37.1535 36.5165 37.0582 36.556 36.9878 36.6263C36.9175 36.6967 36.878 36.792 36.878 36.8915V38.375C36.878 38.5805 37.043 38.75 37.25 38.75L38.3825 38.7425C38.6796 38.7445 38.9638 38.8639 39.1732 39.0746C39.3825 39.2854 39.5 39.5704 39.5 39.8675V48.125C39.5 48.4234 39.3815 48.7095 39.1705 48.9205C38.9595 49.1315 38.6734 49.25 38.375 49.25L37.253 49.2665C37.1535 49.2665 37.0582 49.306 36.9878 49.3763C36.9175 49.4467 36.878 49.542 36.878 49.6415V51.1415C36.878 51.3485 37.046 51.5165 37.253 51.5165L40.25 51.5ZM42.3905 38.7305H44.969C46.328 38.7305 47.126 39.4775 47.126 40.6985C47.126 42.005 46.2635 42.7415 44.3105 42.7415H42.3905V38.7305ZM42.3905 44.807H45.1505C46.856 44.807 47.7845 45.677 47.7845 47.093C47.7845 48.5225 46.8455 49.268 44.5475 49.268H42.3905V44.8085V44.807Z"
-                          fill="white"
-                        />
-                        <defs>
-                          <filter
-                            id="filter0_d_1_55"
-                            x="0"
-                            y="0"
-                            width="88"
-                            height="88"
-                            filterUnits="userSpaceOnUse"
-                            color-interpolation-filters="sRGB"
-                          >
-                            <feFlood
-                              flood-opacity="0"
-                              result="BackgroundImageFix"
-                            />
-                            <feColorMatrix
-                              in="SourceAlpha"
-                              type="matrix"
-                              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                              result="hardAlpha"
-                            />
-                            <feOffset />
-                            <feGaussianBlur stdDeviation="10" />
-                            <feComposite in2="hardAlpha" operator="out" />
-                            <feColorMatrix
-                              type="matrix"
-                              values="0 0 0 0 0.5586 0 0 0 0 0.560629 0 0 0 0 0.57 0 0 0 0.04 0"
-                            />
-                            <feBlend
-                              mode="normal"
-                              in2="BackgroundImageFix"
-                              result="effect1_dropShadow_1_55"
-                            />
-                            <feBlend
-                              mode="normal"
-                              in="SourceGraphic"
-                              in2="effect1_dropShadow_1_55"
-                              result="shape"
-                            />
-                          </filter>
-                        </defs>
-                      </svg>
-                      </div>
-
-                      <div class="text">
-                        <div class="title">
-                         <b>Title</b> 
-                        </div>
-                        <div class="text">
-                          29 November
-                        </div>
-                      </div>
-                </div>
-                <div class="amount">
-                  <span class="amount-detail">
-                    + 100 RS
-                  </span>
-                </div>
-              </div>
-              
-              
-            </div>
-            <div class="transactions pt-2">
-
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                      <div class="image">
-                        <svg
-                        width="48"
-                        height="48"
-                        viewBox="20 20 48 48"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="mr-2"
-                      >
-                        <g filter="url(#filter0_d_1_55)">
-                          <rect
-                            x="20"
-                            y="20"
-                            width="48"
-                            height="48"
-                            rx="16"
-                            fill="#EF8E19"
-                          />
-                        </g>
-                        <path
-                          d="M40.25 51.5V53.375C40.25 53.582 40.418 53.75 40.625 53.75H42.125C42.2245 53.75 42.3198 53.7105 42.3902 53.6402C42.4605 53.5698 42.5 53.4745 42.5 53.375V51.5H43.25V53.375C43.25 53.582 43.418 53.75 43.625 53.75H45.125C45.2245 53.75 45.3198 53.7105 45.3902 53.6402C45.4605 53.5698 45.5 53.4745 45.5 53.375V51.5H45.626C48.614 51.5 50.75 49.9505 50.75 47.27C50.75 45.017 49.2395 43.7855 47.471 43.61V43.478C48.926 43.115 49.9955 42.017 49.9955 40.193C49.9955 37.895 48.2705 36.5 45.638 36.5H45.5V34.625C45.5 34.5255 45.4605 34.4302 45.3902 34.3598C45.3198 34.2895 45.2245 34.25 45.125 34.25H43.625C43.5255 34.25 43.4302 34.2895 43.3598 34.3598C43.2895 34.4302 43.25 34.5255 43.25 34.625V36.5H42.3905V34.625C42.3905 34.5255 42.351 34.4302 42.2807 34.3598C42.2103 34.2895 42.115 34.25 42.0155 34.25H40.625C40.5255 34.25 40.4302 34.2895 40.3598 34.3598C40.2895 34.4302 40.25 34.5255 40.25 34.625V36.5L37.253 36.5165C37.1535 36.5165 37.0582 36.556 36.9878 36.6263C36.9175 36.6967 36.878 36.792 36.878 36.8915V38.375C36.878 38.5805 37.043 38.75 37.25 38.75L38.3825 38.7425C38.6796 38.7445 38.9638 38.8639 39.1732 39.0746C39.3825 39.2854 39.5 39.5704 39.5 39.8675V48.125C39.5 48.4234 39.3815 48.7095 39.1705 48.9205C38.9595 49.1315 38.6734 49.25 38.375 49.25L37.253 49.2665C37.1535 49.2665 37.0582 49.306 36.9878 49.3763C36.9175 49.4467 36.878 49.542 36.878 49.6415V51.1415C36.878 51.3485 37.046 51.5165 37.253 51.5165L40.25 51.5ZM42.3905 38.7305H44.969C46.328 38.7305 47.126 39.4775 47.126 40.6985C47.126 42.005 46.2635 42.7415 44.3105 42.7415H42.3905V38.7305ZM42.3905 44.807H45.1505C46.856 44.807 47.7845 45.677 47.7845 47.093C47.7845 48.5225 46.8455 49.268 44.5475 49.268H42.3905V44.8085V44.807Z"
-                          fill="white"
-                        />
-                        <defs>
-                          <filter
-                            id="filter0_d_1_55"
-                            x="0"
-                            y="0"
-                            width="88"
-                            height="88"
-                            filterUnits="userSpaceOnUse"
-                            color-interpolation-filters="sRGB"
-                          >
-                            <feFlood
-                              flood-opacity="0"
-                              result="BackgroundImageFix"
-                            />
-                            <feColorMatrix
-                              in="SourceAlpha"
-                              type="matrix"
-                              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                              result="hardAlpha"
-                            />
-                            <feOffset />
-                            <feGaussianBlur stdDeviation="10" />
-                            <feComposite in2="hardAlpha" operator="out" />
-                            <feColorMatrix
-                              type="matrix"
-                              values="0 0 0 0 0.5586 0 0 0 0 0.560629 0 0 0 0 0.57 0 0 0 0.04 0"
-                            />
-                            <feBlend
-                              mode="normal"
-                              in2="BackgroundImageFix"
-                              result="effect1_dropShadow_1_55"
-                            />
-                            <feBlend
-                              mode="normal"
-                              in="SourceGraphic"
-                              in2="effect1_dropShadow_1_55"
-                              result="shape"
-                            />
-                          </filter>
-                        </defs>
-                      </svg>
-                      </div>
-
-                      <div class="text">
-                        <div class="title">
-                         <b>Title</b> 
-                        </div>
-                        <div class="text">
-                          29 November
-                        </div>
-                      </div>
-                </div>
-                <div class="amount">
-                  <span class="amount-detail">
-                    + 100 RS
+                    {{Transaction.amount}}
                   </span>
                 </div>
               </div>
@@ -427,39 +164,6 @@
     </div>
 
     <!--====== right section==========-->
-    <!-- <div class="col-md-6 col-lg-6 col-sm-12">
-      <div class="row">
-        <div class="col-md-12 col-lg-12">
-          <h1>Recent History</h1>
-          <div class="row px-5">
-            <div class="col-md-12 py-1">
-              <div class="card">
-                <div class="card-body d-flex justify-content-around">
-                  <div class="card-title">Dentist appointement</div>
-                  <span><p class="card-text">100 rs</p></span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12 py-1">
-              <div class="card">
-                <div class="card-body d-flex justify-content-around">
-                  <div class="card-title">Dentist appointement</div>
-                  <span><p class="card-text">100 rs</p></span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12 py-1">
-              <div class="card">
-                <div class="card-body d-flex justify-content-around">
-                  <div class="card-title">Dentist appointement</div>
-                  <span><p class="card-text">100 rs</p></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 col-lg-12"></div>
-      </div>
-    </div> -->
+  
   </div>
 </div>

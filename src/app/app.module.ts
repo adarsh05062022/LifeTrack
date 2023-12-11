@@ -47,6 +47,10 @@ import { HealthDetailsComponent } from './pages/Health/pages/health-details/heal
 import { FinanceModule } from './pages/Finance/finance.module';
 import { HealthModule } from './pages/Health/health.module';
 import { WorkModule } from './pages/Work/work.module';
+import { RegisterComponent } from './pages/authentication/register/register.component';
+import { LoginComponent } from './pages/authentication/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -58,7 +62,9 @@ import { WorkModule } from './pages/Work/work.module';
     AboutComponent,
     FeatureComponent,
     TeamComponent,
-    FooterComponent,    
+    FooterComponent,
+    RegisterComponent,
+    LoginComponent,    
     
     
   ],
@@ -85,9 +91,12 @@ import { WorkModule } from './pages/Work/work.module';
     FormsModule,
     FinanceModule,
     HealthModule,
-    WorkModule
+    WorkModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
