@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FinanceService } from '../../service/finance.service';
+import { DatePipe } from '@angular/common';
 
 
 interface Category {
@@ -21,7 +23,7 @@ export class AddTransactionComponent {
   expense: any = {};
 
 
-  financeType:String[]= ["Expense","Income","Saving"]
+  financeType:String[]= ["Expense","Income"]
   financeCategories: Category[] = [
     { value: 'groceries', label: 'Groceries', selected: true },
     { value: 'dining', label: 'Dining Out' },
@@ -36,11 +38,27 @@ export class AddTransactionComponent {
     { value: 'subscriptions', label: 'Subscriptions' }
   ];
 
+
+  constructor(private financeService: FinanceService,private datePipe: DatePipe) {}
+
   submitExpense() {
-    // Perform action on form submission (logging to console in this case)
-    console.log('Submitted Expense:', this.expense);
-    // Clear the form after submission
-    this.resetExpense();
+    // Call the addTransaction method from the FinanceService
+    // alert(this.expense)
+    console.log(this.expense)
+
+    this.expense.date = this.datePipe.transform(this.expense.date, 'yyyy-MM-dd');
+
+    this.financeService.addTransaction(this.expense).subscribe(
+      (response) => {
+        console.log('Expense added successfully!', response);
+        // Optionally, perform actions after successful addition
+        this.resetExpense(); // Clear the form after submission
+      },
+      (error) => {
+        console.error('Error adding expense:', error);
+        // Handle error if needed
+      }
+    );
   }
 
   resetExpense() {

@@ -1,8 +1,8 @@
 
 <div class="container-fluid">
   <mdb-tabs  [vertical]="true">
-    <mdb-tab title="Dashboard"><app-dashboard></app-dashboard></mdb-tab>
-    <mdb-tab title="View Transactions"><app-view-transaction></app-view-transaction></mdb-tab>
+    <mdb-tab title="Dashboard"><app-dashboard [transactionList]="TransactionList"></app-dashboard></mdb-tab>
+    <mdb-tab title="View Transactions"><app-view-transaction [transactionList]="TransactionList"></app-view-transaction></mdb-tab>
     <mdb-tab title="Add Transactions"><app-create-transaction></app-create-transaction></mdb-tab>    
   </mdb-tabs> 
 </div>

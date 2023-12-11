@@ -20,7 +20,7 @@
           <!-- Left elements -->
       
           <!-- Center elements -->
-          <ul class="navbar-nav flex-row d-none d-md-flex">
+          <ul *ngIf="isLoggedIn" class="navbar-nav flex-row d-none d-md-flex">
             <li class="nav-item me-3 me-lg-1 active">
               <a class="nav-link" routerLink="/">
                 <span><i class="fas fa-home fa-lg"></i></span>
@@ -54,7 +54,7 @@
            
             
             <li mdbDropdown class="nav-item dropdown me-3 me-lg-1">
-              <a
+              <a *ngIf="isLoggedIn;else notLoggedIn"
                 class="nav-link dropdown-toggle hidden-arrow"
                 href="#"
                 id="navbarDropdownMenuLink"
@@ -63,50 +63,31 @@
                 aria-expanded="false"
               >
               <span><i class="fas fa-user-alt"></i></span>
+              
               </a>
+              <ng-template #notLoggedIn>
+                <!-- Content to display when loggedIn is false -->
+               
+                <button type="button" class="btn btn-primary btn-rounded" routerLink="/login" mdbRipple>Login <i class="fas fa-long-arrow-alt-right"></i></button>
+              </ng-template>
+              
               <ul
                 mdbDropdownMenu
                 class="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
-                  <a class="dropdown-item" href="#">Some news</a>
+                  <button class="btn btn-success text-white dropdown-item" >Profile</button>   
                 </li>
-                <li>
+                <!-- <li>
                   <a class="dropdown-item" href="#">Another news</a>
-                </li>
+                </li> -->
                 <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <button class="btn btn-danger text-white dropdown-item" (click)="logout()">Logout</button>
                 </li>
               </ul>
             </li>
-            <!-- <li mdbDropdown class="nav-item dropdown me-3 me-lg-1">
-              <a
-                class="nav-link dropdown-toggle hidden-arrow"
-                href="#"
-                id="navbarDropdownMenuLink"
-                role="button"
-                mdbDropdownToggle
-                aria-expanded="false"
-              >
-                <i class="fas fa-chevron-circle-down fa-lg"></i>
-              </a>
-              <ul
-                mdbDropdownMenu
-                class="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <li>
-                  <a class="dropdown-item" href="#">Some news</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Another news</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li> -->
+           
           </ul>
           <!-- Right elements -->
         </div>

@@ -1,43 +1,26 @@
-import { Component } from '@angular/core';
-import Chart from 'chart.js/auto';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
-import 'chartjs-adapter-luxon';
+
+interface Transaction {
+  title: string;
+  category: string;
+  amount: string;
+  type: string;
+  message: string;
+  date: string;
+}
 
 @Component({
   selector: 'app-finance-chart',
   templateUrl: './finance-chart.component.html',
   styleUrls: ['./finance-chart.component.scss'],
 })
-export class FinanceChartComponent {
-  public lineChartData: ChartDataset[] = [
-    {
-      label: 'Expense',
-      data: [14000, 15000, 13000, 14000, 16000, 12000, 15000],
-      borderColor: 'red',
-      backgroundColor: 'rgba(255, 0, 0, 0.5)',
-      fill: false,
-      tension: 0.4
-    },
-    {
-      label: 'Income',
-      data: [11900, 14000, 13000, 17000, 15000, 10000, 18000],
-      borderColor: 'blue',
-      backgroundColor: 'rgba(0, 0, 255, 0.5)',
-      fill: false,
-      tension: 0.4
-    }
-  ];
+export class FinanceChartComponent implements OnChanges {
 
-  public lineChartLabels: string[] = [
-    'Label 1',
-    'Label 2',
-    'Label 3',
-    'Label 4',
-    'Label 5',
-    'Label 6',
-    'Label 7'
-  ];
+  @Input() transactionList: Transaction[] = [];
 
+  public lineChartData: ChartDataset[] = [];
+  public lineChartLabels: string[] = [];
   public lineChartOptions: ChartOptions = {
     plugins: {
       title: {
@@ -46,11 +29,58 @@ export class FinanceChartComponent {
       }
     }
   };
-
   public lineChartType: ChartType = 'line';
   public lineChartLegend = true;
 
-  getRandomNumbers(): number[] {
-    return Array.from({ length: 7 }, () => Math.floor(Math.random() * 100));
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['transactionList'] && this.transactionList.length > 0) {
+      this.updateChartData();
+    }
+  }
+
+  updateChartData() {
+    const currentDate = new Date();
+    const monthsData: { monthLabel: string, income: number, expense: number }[] = [];
+
+    for (let i = 6; i >= 0; i--) {
+      const month = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1);
+      const monthLabel = month.toLocaleDateString('default', { month: 'short', year: 'numeric' });
+
+      const filteredTransactions = this.transactionList.filter(transaction => {
+        const transactionDate = new Date(transaction.date);
+        return transactionDate.getMonth() === month.getMonth() && transactionDate.getFullYear() === month.getFullYear();
+      });
+
+      const totalIncome = filteredTransactions.reduce((sum, transaction) => {
+        return transaction.type === 'income' ? sum + parseFloat(transaction.amount) : sum;
+      }, 0);
+
+      const totalExpense = filteredTransactions.reduce((sum, transaction) => {
+        return transaction.type === 'expense' ? sum + parseFloat(transaction.amount) : sum;
+      }, 0);
+
+      monthsData.push({ monthLabel, income: totalIncome, expense: totalExpense });
+    }
+
+    this.lineChartData = [
+      {
+        label: 'Expense',
+        data: monthsData.map(data => data.expense),
+        borderColor: 'red',
+        backgroundColor: 'rgba(255, 0, 0, 0.5)',
+        fill: false,
+        tension: 0.4
+      },
+      {
+        label: 'Income',
+        data: monthsData.map(data => data.income),
+        borderColor: 'blue',
+        backgroundColor: 'rgba(0, 0, 255, 0.5)',
+        fill: false,
+        tension: 0.4
+      }
+    ];
+
+    this.lineChartLabels = monthsData.map(data => data.monthLabel);
   }
 }

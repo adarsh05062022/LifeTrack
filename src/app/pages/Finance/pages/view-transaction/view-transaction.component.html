@@ -6,10 +6,12 @@
                 <form class="d-flex input-group w-auto">
                         <input
                           type="search"
-                          type="search"
                           class="form-control rounded"
-                          placeholder="Search"
+                          placeholder="Search by title or amount"
                           aria-label="Search"
+                          [(ngModel)]="searchInput"
+                          (input)="filterTransactions()" 
+                          name="searchField"
                         />
                         <span class="input-group-text border-0" id="search-addon">
                           <i class="fas fa-search"></i>
@@ -20,22 +22,20 @@
       </div>
       <div class="col-md-6 d-flex justify-content-around align-items-center">
            <div class="selectOption ">
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" (change)="onTypeChange($event)" aria-label="Default select example">
                         <option value="all" selected>All</option>
                         <option value="income">Income</option>
                         <option value="expense">Expense</option>
                       </select>
            </div>
-           <div class="datePicker d-flex justify-content-center align-items-center">
-                <input type="date" name="" id="">
-           </div>
+           
                 
         
       </div>
     </div>
   </div>
   <div class="com-md-12">
-    <app-transaction-list></app-transaction-list>
+    <app-transaction-list [transactionList]="filteredTransactions"></app-transaction-list>
   </div>
   <div class="col-md-12"></div>
 </div>

@@ -1,75 +1,60 @@
 <form class="p-3">
-  <div class="container ">
-    <div
-      class="wrapper p-2 d-flex justify-content-center align-items-center flex-column"
-    >
-      <div class="">
-        <div class="date_amount-container py-3">
-          <div
-            class="d-flex justify-content-cener py-1 align-items-center date"
-          >
-            <label for="ExpenseDate" class="form-label">Title:</label>
-            <input type="text" id="ExpenseTitle" class="form-control" />
-          </div>
-          <div
-            class="d-flex justify-content-cener py-1 align-items-center date"
-          >
-            <label for="ExpenseDate" class="form-label">Date:</label>
-            <input type="date" id="ExpenseTitle" class="form-control" />
-          </div>
-          <div
-            class="d-flex justify-content-cener py-1 align-items-center amount"
-          >
-            <label for="ExpenseDate" class="form-label"
-              >Amount: <br />(in Rs)</label
-            >
-            <input type="text" id="ExpenseTitle" class="form-control" />
-          </div>
+  <div class="container">
+    <div class="wrapper p-2 d-flex justify-content-center align-items-center flex-column">
+      <!-- Title Input -->
+      <div class="date_amount-container py-3">
+        <div class="d-flex justify-content-center py-1 align-items-center date">
+          <label for="ExpenseTitle" class="form-label">Title:</label>
+          <input type="text" id="ExpenseTitle" name="title" class="form-control" [(ngModel)]="expense.title">
+        </div>
+
+        <!-- Date Input -->
+        <div class="d-flex justify-content-center py-1 align-items-center date">
+          <label for="ExpenseDate" class="form-label">Date:</label>
+
+          <input type="date" id="ExpenseDate" name="date" class="form-control" [(ngModel)]="expense.date"/>
+        </div>
+
+        <!-- Amount Input -->
+        <div class="d-flex justify-content-center py-1 align-items-center amount">
+          <label for="ExpenseAmount" class="form-label">Amount: <br />(in Rs)</label>
+          <input type="number" id="ExpenseAmount" name="amount" class="form-control" [(ngModel)]="expense.amount">
         </div>
       </div>
 
-      <div class="">
-        <div class="type_category-container p-3">
-          <div class="d-flex justify-content-cener align-items-center type">
-            <label for="ExpenseDate" class="form-label">Type</label>
-            <select class="form-select" id="ExpenseType ">
-              <option
-                *ngFor="let type of financeType"
-                [value]="type"
-                [selected]="type === 'Expense'"
-              >
-                {{ type }}
-              </option>
-            </select>
-          </div>
-          <div class="d-flex justify-content-cener align-items-center category">
-            <label for="ExpenseDate" class="form-label">Category</label>
-            <select class="form-select" id="ExpenseType">
-              <option
-                *ngFor="let category of financeCategories"
-                [value]="category.value"
-                [selected]="category.selected"
-              >
-                {{ category.label }}
-              </option>
-            </select>
-          </div>
+      <!-- Type and Category Select -->
+
+
+
+      <div class="type_category-container p-3">
+        <div class="d-flex justify-content-center align-items-center type">
+          <label for="ExpenseType" class="form-label">Type</label>
+          <select class="form-select" name="type" id="ExpenseType" [(ngModel)]="expense.type">
+            <option *ngFor="let type of financeType" [value]="type" [selected]="type === 'Expense'">
+              {{ type }}
+            </option>
+          </select>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center category">
+          <label for="ExpenseCategory" class="form-label">Category</label>
+          <select class="form-select" name="category" id="ExpenseCategory" [(ngModel)]="expense.category">
+            <option *ngFor="let category of financeCategories" [value]="category.value" [selected]="category.selected">
+              {{ category.label }}
+            </option>
+          </select>
         </div>
       </div>
 
-      <div
-        class="message py-3 d-flex justify-content-center align-items-center w-100"
-      >
+      <!-- Message Textarea -->
+      <div class="message py-3 d-flex justify-content-center align-items-center w-100">
         <label for="ExpenseMessage" class="form-label">Message</label>
-        <textarea
-          class="form-control"
-          id="ExpenseMessage"
-          rows="5"
-          cols="50"
-        ></textarea>
+        <textarea class="form-control" name="message" id="ExpenseMessage" rows="5" cols="50" [(ngModel)]="expense.message"></textarea>
       </div>
+
+      <!-- Button for Adding Expense -->
       <div class="button py-2 d-flex justify-content-center align-items-end w-100">
-        <button type="button" class="btn btn-danger" mdbRipple>
+        <button (click)="submitExpense()" class="btn btn-danger" mdbRipple>
           <i class="fas fa-plus"></i> Add Expense
         </button>
       </div>

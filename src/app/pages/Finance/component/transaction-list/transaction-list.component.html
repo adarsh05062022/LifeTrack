@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let transaction of transactions; let i = index">
+    <tr *ngFor="let transaction of transactionList; let i = index">
       <td>{{i+1}}</td>
       <td>{{transaction.title}}</td>
       <td>
@@ -24,8 +24,8 @@
       </td>
       
       
-      <td>{{transaction.messege}}</td>
-      <td>{{transaction.date}}</td>
+      <td>{{transaction.message}}</td>
+      <td>{{formettedDate(transaction.date)}}</td>
       <td>
         <button
           type="button"
