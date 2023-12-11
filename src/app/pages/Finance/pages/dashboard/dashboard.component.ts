@@ -29,8 +29,11 @@ export class DashboardComponent {
     if (this.transactionList.length > 5) {
       return this.transactionList.slice(0, 5);
     }
+    else{
+      return this.transactionList
+    }
 
-    return [];
+    
   }
 
   get TotalExpense(): number {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FinanceService } from '../../service/finance.service';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 interface Category {
@@ -39,7 +40,7 @@ export class AddTransactionComponent {
   ];
 
 
-  constructor(private financeService: FinanceService,private datePipe: DatePipe) {}
+  constructor(private financeService: FinanceService,private datePipe: DatePipe,private router:Router) {}
 
   submitExpense() {
     // Call the addTransaction method from the FinanceService
@@ -53,6 +54,9 @@ export class AddTransactionComponent {
         console.log('Expense added successfully!', response);
         // Optionally, perform actions after successful addition
         this.resetExpense(); // Clear the form after submission
+
+        this.router.navigate(['/finance']).then(()=>window.location.reload())
+
       },
       (error) => {
         console.error('Error adding expense:', error);

@@ -37,6 +37,7 @@ export class LoginComponent {
           localStorage.setItem("UserData",UserData)
       },
       (error) => {
+        alert("Login Failed")
         console.error('Login failed:', error);
         // Handle registration error
        

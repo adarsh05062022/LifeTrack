@@ -16,6 +16,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 
 
 
@@ -41,7 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MdbCollapseModule,
     MdbTabsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MdbTooltipModule
   ]
 })
 export class FinanceModule { }
