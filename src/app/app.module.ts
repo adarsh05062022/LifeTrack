@@ -92,7 +92,8 @@ import { DatePipe } from '@angular/common';
     FinanceModule,
     HealthModule,
     WorkModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule 
   ],
   providers: [
     DatePipe

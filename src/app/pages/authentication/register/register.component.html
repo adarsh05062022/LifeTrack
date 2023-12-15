@@ -1,22 +1,29 @@
 <!-- register.component.html -->
-
 <div class="container">
-        <h2>Register</h2>
-        <form (ngSubmit)="onSubmit()" class="register-form">
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" [(ngModel)]="userData.username" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="userData.email" required>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="userData.password" required>
-          </div>
-          <button type="submit" class="btn btn-primary">Register</button>
-        </form>
-        <p class="login-link">Already have an account? <a href="/login">Login here</a></p>
+  <h2>Register</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm" class="register-form">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" formControlName="username">
+      <div *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched" class="text-danger">
+        Username is required
       </div>
-      
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" formControlName="email">
+      <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="text-danger">
+        Please enter a valid email
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password">
+      <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="text-danger">
+        Password must be at least 6 characters
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">Register</button>
+  </form>
+  <p class="login-link">Already have an account? <a href="/login">Login here</a></p>
+</div>
